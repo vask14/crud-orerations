@@ -1,0 +1,33 @@
+extends layout
+block content
+  div(class = "container")
+    form#contact(action = "/users/user" method = "post")
+      fieldset
+        input(placeholder = "Your id" type="text" name="id"  required autofocus)
+      fieldset
+        input(placeholder = "Your name" type="text" name="name" tabindex="1" required)
+      fieldset
+        input(placeholder = "Your surname" type="text" name="surname" tabindex="1" required)
+      fieldset
+        input(placeholder = "Your age" type="text" name="age" tabindex="1" required)
+      fielset
+        input(placeholder = "Your Email Address" type="email" name="mail" tabindex="2" required)
+      button(name="submit" type="submit" id="contact-submit") Submit
+
+  div(class="container-info") 
+    each user in users       
+        form(action = '/users/user/' + user.id method="POST")  
+           input#id(value=user.id,name="id",type="text")
+         
+           input(value=user.name,name="name",type="text")
+         
+           input(value=user.surname,name="surname",type="text")
+         
+           input(value=user.age,name ="age",type="text")
+  
+           input(value=user.mail,name="mail",type="text")
+           button(type='submit')  change
+        form(action = '/users/user/delete/' + user.id method="POST")
+           button#remove-button(type='submit') remove
+
+          
