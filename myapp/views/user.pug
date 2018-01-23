@@ -16,7 +16,7 @@ block content
 
   div(class="container-info") 
     each user in users       
-        form(action = '/users/user/' + user.id method="POST")  
+        form(action = '/users/user/' method="POST")  
            input#id(value=user.id,name="id",type="text")
          
            input(value=user.name,name="name",type="text")
@@ -27,7 +27,7 @@ block content
   
            input(value=user.mail,name="mail",type="text")
            button(type='submit')  change
-        form(action = '/users/user/delete/' + user.id method="POST")
+        form(action = '/users/user/delete/' method="POST")
            button#remove-button(type='submit') remove
 
           
