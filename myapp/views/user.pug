@@ -1,23 +1,31 @@
 extends layout
-
 block content
-   button#get-button Read
-   form#create-form
-      input(type="text" id="create-name")
-      input(type="text" id="create-surname")
-      input(type="text" id="create-age")
-      input(type="text" id="create-mail")
-      button Create
-   hr
-   table
-      thead
-         tr
-           th Id
-           th Name
-           th Surname
-           th Age
-           th Mail
-           th Action
-      tbody
-   script(src="/javascripts/jquery.js") 
-   script(src="/javascripts/script.js")       
+  div(class = "container")
+    form#contact(action = "/users/user" method = "post")
+      fieldset
+        input(placeholder = "Your id" type="text" name="id"  required autofocus)
+      fieldset
+        input(placeholder = "Your name" type="text" name="name" tabindex="1" required)
+      fieldset
+        input(placeholder = "Your surname" type="text" name="surname" tabindex="1" required)
+      fieldset
+        input(placeholder = "Your age" type="text" name="age" tabindex="1" required)
+      fielset
+        input(placeholder = "Your Email Address" type="email" name="mail" tabindex="2" required)
+      button(name="submit" type="submit" id="contact-submit") Submit
+
+  div(class="container-info") 
+    each user in users       
+        form(action = '/users/'+user.id+'?_method=PUT' method="POST")  
+           input#id(value=user.id,name="id",type="text")
+         
+           input(value=user.name,name="name",type="text")
+         
+           input(value=user.surname,name="surname",type="text")
+         
+           input(value=user.age,name ="age",type="text")
+  
+           input(value=user.mail,name="mail",type="text")
+           button(type='submit')  change
+        form(method="POST" action = '/users/'+user.id+'?_method=DELETE')
+           button#remove-button(type='submit') remove
