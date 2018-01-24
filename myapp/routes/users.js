@@ -16,7 +16,7 @@ router.post('/user',function(req,res,next) {
   users.push(req.body);
 });
 
-//DELETE
+//PUT
 router.post('/user/:id',function(req,res) {
   res.redirect('/users');
   let id = req.params.id;
@@ -28,7 +28,7 @@ router.post('/user/:id',function(req,res) {
 });
 
 
-//PUT
+//DELETE
 router.post('/user/delete/:id',function(req,res) {
   res.redirect('/users'); 
   let id = req.params.id;
